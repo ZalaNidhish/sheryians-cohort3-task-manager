@@ -85,11 +85,20 @@ header div h4:hover{
 }
 
 #add{
-    color: var(--text);
-    font-size: 20px;
+    color: white;
+    font-size: 40px;
     font-weight: 800;
-    border: 2px solid var(--orange-accent);
-    background-color: transparent;
+    background: linear-gradient(-45deg, rgb(255, 132, 80), var(--orange-accent));
+    position: absolute;
+    bottom: 4vh;
+    right: 4vh;
+    height: 4vh;
+    width: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh;
+    border-radius: 10px;
 }
 
 .active{
@@ -102,7 +111,7 @@ header div h4:hover{
     padding-block: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8vh;
+    gap: 4vh;
     overflow-y: auto;
     max-height: 80vh;
     padding-inline: 1vh;

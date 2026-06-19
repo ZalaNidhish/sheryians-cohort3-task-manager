@@ -150,7 +150,7 @@ header div h4:hover{
     justify-content: space-between;
     width: 100%;    
     font-size: 16px;
-    height: 10vh;
+    max-height: 10vh;
     overflow-y: scroll;
     margin-block: 2vh;
     line-height: 2vh;

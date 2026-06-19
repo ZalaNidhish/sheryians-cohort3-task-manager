@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+    
+    <main>
+        <header>
+            <h1>TODO App</h1>
+            <div>
+                <div>
+                    <h4 id="all_btn" class="active">All</h4>
+                    <h4 id="pending_btn">Pending</h4>
+                    <h4 id="completed_btn">Completed</h4>
+                    <h4 id="add">+</h4>
+                </div>
+                <div class="mode"></i><i id="moon" class="ri-moon-fill"></i></div>
+            </div>
+        </header>
+
+        <div class="overlay">
+            <form>
+            <div class="close"><span id="closeBTN">x</span></div>
+            <div class="inputs">
+
+                <fieldset>
+                    <label for="title">Title<span id="required">*</span></label>
+                    <input type="text" name="title">
+                </fieldset>
+                <fieldset>
+                    <label for="content">Content<span id="required">*</span></label>
+                    <input type="text" name="content">
+                </fieldset>
+                <fieldset id="selectCategory">
+                    <label for="category">Category<span id="required">*</span></label>
+                    <select name="category" id="categoryDropDown"></select>
+                </fieldset>
+
+            </div>
+            <button id="add_btn">Add</button>
+        </form>
+        </div>
+        <div class="task-grid"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

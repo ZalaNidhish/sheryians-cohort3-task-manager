@@ -1,0 +1,371 @@
+:root{
+    --orange-accent: rgb(160, 67, 0);
+    --green-accent: rgb(10, 117, 0);
+    --bg: black;
+    --card: rgb(20, 20, 20);
+    --empty-text: rgb(35, 35, 35);
+    --text: rgb(255, 255, 255);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+main.light{
+    --orange-accent: rgb(160, 67, 0);
+    --bg: rgb(250, 250, 250);
+    --card: rgb(255, 255, 255);
+    --empty-text: rgb(176, 176, 176);
+    --text: black;
+}
+
+main.light .task{
+    box-shadow: 2px 2px 10px rgba(202, 202, 202, 0.724);
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 2vh 10vh;
+    position: relative;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.emptygridtext{
+    width: 100%;
+    color: var(--empty-text);
+    font-size: 20vh;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 10;
+    padding-block: 4vh;
+}
+
+header div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+}
+
+header div h4{
+    height: 4vh;
+    padding: 2vh 4vh;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid var(--orange-accent);
+    background-color: rgba(158, 104, 65, 0.347);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+header div h4:hover{
+    border: 2px solid var(--orange-accent);
+}
+
+#add{
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 800;
+    border: 2px solid var(--orange-accent);
+    background-color: transparent;
+}
+
+.active{
+    background-color: var(--orange-accent);
+    color: white;
+}
+
+.task-grid{
+    width: 100%;
+    padding-block: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vh;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.task{
+    background-color: var(--card);
+    width: 100%;
+    padding: 2vh;
+    border-radius: 10px;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    position: relative;
+}
+
+.task::before{
+    content: attr(data-category);
+    background-color: var(--category-bg);
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    border-radius: 20px;
+    border: 1px solid var(--category-color);
+    padding: 0.5vh 1.5vh;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--category-color);
+}
+
+.title{
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.content{
+    height: 15vh;
+    padding-block: 4vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;    
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+p{
+    color: var(--text);
+    font-size: 14px;
+    width: 60%;
+}
+
+button{
+    color: white;
+    outline: none;
+    border: none;
+    padding: 1.5vh;
+    border-radius: 20px;
+    font-size: 12px;
+    align-self: flex-end;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+button span{
+    position: relative;
+    z-index: 2;
+}
+
+.pending{
+    background: linear-gradient(rgb(255, 132, 80), var(--orange-accent), var(--orange-accent));
+}
+
+.pending::before{
+    content: '';
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: var(--green-accent);
+    transition: all 0.2s ease;
+}
+
+.pending:active::before{
+    width: 100%;
+}
+
+.completed{
+    background: linear-gradient(rgb(80, 255, 54), var(--green-accent),var(--green-accent));
+}
+
+.completed::before{
+    content: '';
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: var(--orange-accent);
+    transition: all 0.2s ease;
+}
+
+.completed:active::before{
+    width: 100%;
+}
+
+.btns{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    gap: 1vh;
+}
+
+#edit, #delete{
+    background-color: transparent;
+    text-decoration: underline;
+    padding: 1vh;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.overlay{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.849);
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+form{
+    background-color: var(--card);
+    display: flex;
+    flex-direction: column;
+    padding: 4vh;
+    border-radius: 10px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+.close{
+    align-self: end;
+    background-color: rgb(160, 67, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 4vh;
+    width: 4vh;
+    cursor: pointer;
+}
+
+form fieldset{
+    border: none;
+}
+
+#required{
+    color: rgb(255, 104, 104);
+}
+
+form input{
+    background-color: transparent;
+    width: 100%;
+    padding: 1vh 2vh;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    outline: none;
+}
+
+form button{
+    background-color: var(--orange-accent);
+    outline: none;
+    padding: 1vh 2vh;
+    border-radius: 4px;
+    margin-top: 6vh;
+    width: 100%;
+
+}
+
+.mode{
+    transition: all 0.2s ease;
+    margin-left: 4vw;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.mode:active{
+    transform: rotate(360deg);
+}
+
+
+
+@media (max-width: 920px) {
+
+    main{
+        padding: 2vh;
+    }
+ 
+    header{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        gap: 4vh;
+    }
+
+    header div{
+        width: 100%;
+        justify-content: space-between;
+        gap: 1vh;
+    }
+
+    header div h4{
+        font-weight: 400;
+        font-size: 12px;
+        padding: 0 2vh;
+    }
+ 
+    .task-grid{
+        width: 100%;
+        padding-block: 10vh;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    
+    .task{
+        padding: 2vh;
+        height: 20vh;
+    }
+
+    .title{
+        font-size: 12px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    button{
+        padding: 0.8vh 1vh;
+        border-radius: 6px;
+        font-size: 10px;
+    }
+
+    .mode{
+        margin-left: 20vw;
+    }
+   
+}

@@ -3,7 +3,7 @@
     --green-accent: rgb(10, 117, 0);
     --bg: black;
     --card: rgb(20, 20, 20);
-    --empty-text: rgb(35, 35, 35);
+    --empty-text: rgb(78, 78, 78);
     --text: rgb(255, 255, 255);
 }
 
@@ -26,7 +26,7 @@ main.light{
 }
 
 main.light .task{
-    box-shadow: 2px 2px 10px rgba(202, 202, 202, 0.724);
+    box-shadow: 2px 4px 10px rgba(202, 202, 202, 0.724), -2px -2px 10px rgba(202, 202, 202, 0.724);
 }
 
 main{
@@ -42,7 +42,7 @@ main{
 .emptygridtext{
     width: 100%;
     color: var(--empty-text);
-    font-size: 20vh;
+    font-size: 30px;
     font-weight: 800;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -54,6 +54,8 @@ header{
     width: 100%;
     z-index: 10;
     padding-block: 4vh;
+    border-bottom: 1px solid rgb(140, 140, 140);
+
 }
 
 header div{
@@ -103,14 +105,15 @@ header div h4:hover{
     gap: 8vh;
     overflow-y: auto;
     max-height: 80vh;
+    padding-inline: 1vh;
 }
 
 .task{
     background-color: var(--card);
     width: 100%;
+    max-height: 35vh;
     padding: 2vh;
     border-radius: 10px;
-    height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -138,14 +141,19 @@ header div h4:hover{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-size: 18px;
 }
 
 .content{
-    height: 15vh;
-    padding-block: 4vh;
+    padding-block: 2vh;
     display: flex;
     justify-content: space-between;
     width: 100%;    
+    font-size: 16px;
+    height: 10vh;
+    overflow-y: scroll;
+    margin-block: 2vh;
+    line-height: 2vh;
 }
 
 ::-webkit-scrollbar{
@@ -155,7 +163,6 @@ header div h4:hover{
 p{
     color: var(--text);
     font-size: 14px;
-    width: 60%;
 }
 
 button{
@@ -169,6 +176,7 @@ button{
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    text-wrap: nowrap;
 }
 
 button span{
@@ -225,10 +233,13 @@ button span{
 
 #edit, #delete{
     background-color: transparent;
-    text-decoration: underline;
-    padding: 1vh;
+    border: 1px solid var(--text);
+    margin: 4px;
+    border-radius: 10px;
+    padding: 0.4vh 1vh;
     font-size: 14px;
     font-weight: 400;
+    cursor: pointer;
 }
 
 .overlay{
@@ -268,6 +279,7 @@ form{
     height: 4vh;
     width: 4vh;
     cursor: pointer;
+    color: white;
 }
 
 form fieldset{
@@ -282,14 +294,14 @@ form input{
     background-color: transparent;
     width: 100%;
     padding: 1vh 2vh;
-    color: white;
-    border: 1px solid white;
+    color: var(--text);
+    border: 1px solid var(--text);
     border-radius: 4px;
     outline: none;
 }
 
 form button{
-    background-color: var(--orange-accent);
+    background: linear-gradient(rgb(255, 132, 80), var(--orange-accent), var(--orange-accent));
     outline: none;
     padding: 1vh 2vh;
     border-radius: 4px;
@@ -298,14 +310,13 @@ form button{
 
 }
 
-.mode{
+.mode i{
     transition: all 0.2s ease;
-    margin-left: 4vw;
     cursor: pointer;
     font-size: 20px;
 }
 
-.mode:active{
+.mode i:active{
     transform: rotate(360deg);
 }
 
@@ -347,7 +358,7 @@ form button{
     
     .task{
         padding: 2vh;
-        height: 20vh;
+        max-height: 25vh;
     }
 
     .title{
@@ -359,13 +370,9 @@ form button{
     }
 
     button{
-        padding: 0.8vh 1vh;
+        padding: 1vh 1vh;
         border-radius: 6px;
-        font-size: 10px;
-    }
-
-    .mode{
-        margin-left: 20vw;
+        font-size: 12px;
     }
    
 }

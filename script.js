@@ -92,7 +92,8 @@ function createCards(filteredCards) {
         card.innerHTML = 
             `
                 <div class="title"><h2>${task.title}</h2><div><span id="edit">edit</span><span id="delete">delete</span></div></div>
-                <div class="content"><p>${task.content}</p><button id="status" class="${task.isCompleted ? "completed" : "pending"}"><span>Mark as ${task.isCompleted ? "Pending" : "Completed"}</span></button></div>
+                <div class="content"><p>${task.content}</p></div>
+                <button id="status" class="${task.isCompleted ? "completed" : "pending"}"><span>Mark as ${task.isCompleted ? "Pending" : "Completed"}</span></button>
             `;
 
         let categoryObj = categories.find(t=>t.name == task.category)
@@ -239,8 +240,8 @@ function changeStatus(id) {
 }
 
 function deleteCard(id){
-  let confirm = confirm("confirm deleting task ?")
-  if(!confirm) return
+  let confirm_delete = confirm("confirm deleting task ?")
+  if(!confirm_delete) return
   let index = tasks.findIndex((task)=>{
     return task.id == id
   })
@@ -249,7 +250,7 @@ function deleteCard(id){
   render()
 }
 
-function editCard(id){
+function editCard(id){  
     let task = tasks.find(task=>{
       return task.id == id
     })

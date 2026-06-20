@@ -195,6 +195,7 @@ function handleNewSubmit(e){
   })
   overlay.style.display = "none"
   saveTasks()
+  form.reset()
   render()
 }
 
